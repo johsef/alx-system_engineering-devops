@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+# Bash file that shows listening ports and PID to which
+# each socets belongs
+netstat -l --program
