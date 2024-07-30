@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+#Implementing a redirect
+sudo apt-get update -y
+sudo apt-get install -y nginx
+
+echo "Hello World!" > /var/www/html/index.nginx-debian.html
+sudo sed -i "/listen 80 default_server;/a rewrite ^/redirect_me https://google.com permanent;" /etc/nginx/sites-enabled/default
+
+echo "Ceci n'est pas une page." > /usr/share/nginx/html/404_error_page.html
+sudo sed -i "37i error_page 404 /404_error_page.html;\nlocation = /404_error_page.html {\nroot /usr/share/nginx/html; \ninternal;\n}\n" /etc/nginx/sites-enabled/default
+
+sudo service nginx restart
