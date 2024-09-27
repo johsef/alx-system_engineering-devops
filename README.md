@@ -1,1 +1,1 @@
-A repository containing solutions to shell basics
+ALX Engineering devops
